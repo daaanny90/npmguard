@@ -34,7 +34,7 @@ Download the repository and in the terminal give:
 ```bash
 npm i && npm i -g .
 ```
-What you are doing is install the dependencies of depcheck and install depcheck globally in your system.
+What you are doing is install the dependencies of depaudit and install depaudit globally in your system.
 
 ### Options
 
@@ -46,7 +46,7 @@ What you are doing is install the dependencies of depcheck and install depcheck 
 Example with options:
 
 ```bash
-depaudit check -m 6 -p ./my-project
+depaudit start -m 6 -p ./my-project
 ```
 
 ## Output Legend
@@ -86,7 +86,7 @@ The tool uses the following icons to indicate different types of issues:
 - Internet connection (for GitHub repository checks)
 
 ## TO-DO
-- [ ] Add support for a Whitelist to reduce noise (`.depcheckrc.json` with name and reason for skipping)
+- [ ] Add support for a Whitelist to reduce noise (`.depauditrc.json` with name and reason for skipping)
   - better in `JSON` format
   - with a validation function to check if some white listed package are not more used or has no more issue
   - show the white listed packages in the output
