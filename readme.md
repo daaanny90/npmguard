@@ -1,4 +1,4 @@
-# DepScan - Dependency Audit CLI
+# NPMGuard - Dependency Audit CLI
 
 A command-line tool that performs maintenance audits on your project dependencies by analyzing package age, repository status, and version stability.
 
