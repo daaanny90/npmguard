@@ -16,7 +16,7 @@
   },
   "type": "module",
   "bin": {
-    "depaudit": "./dist/index.js"
+    "depaudit": "dist/index.js"
   },
   "files": [
     "dist"
