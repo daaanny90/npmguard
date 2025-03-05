@@ -1,20 +1,16 @@
-# DepAudit - Dependency Audit CLI
+# DepScan - Dependency Audit CLI
 
 A command-line tool that performs maintenance audits on your project dependencies by analyzing package age, repository status, and version stability.
 
 ```
- ██████████                        █████████                  █████  ███   █████   
-░░███░░░░███                      ███░░░░░███                ░░███  ░░░   ░░███    
- ░███   ░░███  ██████  ████████  ░███    ░███  █████ ████  ███████  ████  ███████  
- ░███    ░███ ███░░███░░███░░███ ░███████████ ░░███ ░███  ███░░███ ░░███ ░░░███░   
- ░███    ░███░███████  ░███ ░███ ░███░░░░░███  ░███ ░███ ░███ ░███  ░███   ░███    
- ░███    ███ ░███░░░   ░███ ░███ ░███    ░███  ░███ ░███ ░███ ░███  ░███   ░███ ███
- ██████████  ░░██████  ░███████  █████   █████ ░░████████░░████████ █████  ░░█████ 
-░░░░░░░░░░    ░░░░░░   ░███░░░  ░░░░░   ░░░░░   ░░░░░░░░  ░░░░░░░░ ░░░░░    ░░░░░  
-                       ░███                                                        
-                       █████                                                       
-                      ░░░░░                                                        
-```
+ ██████   █████ ███████████  ██████   ██████   █████████                                     █████
+░░██████ ░░███ ░░███░░░░░███░░██████ ██████   ███░░░░░███                                   ░░███ 
+ ░███░███ ░███  ░███    ░███ ░███░█████░███  ███     ░░░  █████ ████  ██████   ████████   ███████ 
+ ░███░░███░███  ░██████████  ░███░░███ ░███ ░███         ░░███ ░███  ░░░░░███ ░░███░░███ ███░░███ 
+ ░███ ░░██████  ░███░░░░░░   ░███ ░░░  ░███ ░███    █████ ░███ ░███   ███████  ░███ ░░░ ░███ ░███ 
+ ░███  ░░█████  ░███         ░███      ░███ ░░███  ░░███  ░███ ░███  ███░░███  ░███     ░███ ░███ 
+ █████  ░░█████ █████        █████     █████ ░░█████████  ░░████████░░████████ █████    ░░████████
+░░░░░    ░░░░░ ░░░░░        ░░░░░     ░░░░░   ░░░░░░░░░    ░░░░░░░░  ░░░░░░░░ ░░░░░      ░░░░░░░░ ```
 
 ## Features
 
@@ -27,14 +23,12 @@ A command-line tool that performs maintenance audits on your project dependencie
 - Provides a clear, color-coded table output of findings
 - Customizable audit timeframe
 
-## Usage
-
-Download the repository and in the terminal give:
+## Installation and Usage
 
 ```bash
-npm i && npm i -g .
+npm i -g npmguard 
 ```
-What you are doing is install the dependencies of depaudit and install depaudit globally in your system.
+What you are doing is install the dependencies of npmguard and install npmguard globally in your system.
 
 ### Options
 
@@ -46,7 +40,7 @@ What you are doing is install the dependencies of depaudit and install depaudit 
 Example with options:
 
 ```bash
-depaudit start -m 6 -p ./my-project
+npmguard start -m 6 -p ./my-project
 ```
 
 ## Output Legend
@@ -86,7 +80,7 @@ The tool uses the following icons to indicate different types of issues:
 - Internet connection (for GitHub repository checks)
 
 ## TO-DO
-- [ ] Add support for a Whitelist to reduce noise (`.depauditrc.json` with name and reason for skipping)
+- [ ] Add support for a Whitelist to reduce noise (`.npmguardrc.json` with name and reason for skipping)
   - better in `JSON` format
   - with a validation function to check if some white listed package are not more used or has no more issue
   - show the white listed packages in the output
