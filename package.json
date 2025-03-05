@@ -1,0 +1,36 @@
+{
+  "name": "depaudit",
+  "version": "1.0.0",
+  "description": "A CLI tool to audit npm dependencies for maintenance issues",
+  "main": "index.js",
+  "keywords": [
+    "cli",
+    "dependencies",
+    "audit",
+    "npm",
+    "maintenance"
+  ],
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "type": "module",
+  "bin": {
+    "depcheck": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "Danny Spina",
+  "license": "MIT",
+  "dependencies": {
+    "@types/semver": "^7.5.8",
+    "chalk": "^5.3.0",
+    "cheerio": "^1.0.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "puppeteer": "^23.11.1",
+    "semver": "^7.6.3",
+    "typescript": "^5.7.3"
+  }
+}
