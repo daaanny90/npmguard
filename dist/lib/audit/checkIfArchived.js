@@ -1,26 +1,29 @@
-import puppeteer from "puppeteer";
-import { parseGitHubRepoUrl } from "../parseGithub.js";
 import { execSync } from 'child_process';
+import { parseGitHubRepoUrl } from "../parseGithub.js";
 export async function checkIfArchived(npmInfo) {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
     if (!npmInfo || !npmInfo.hasOwnProperty('repository')) {
         console.error(`\n ❌ npm info does not contain repository URL. Please check the package manually.`);
         return null;
     }
     const apiUrl = parseGitHubRepoUrl(npmInfo.repository);
     const repoUrl = `https://github.com/${apiUrl.username}/${apiUrl.repo}`;
-    await page.goto(repoUrl);
-    await page.setViewport({ width: 1080, height: 1024 });
-    const command = `curl -s "${repoUrl}"`;
-    const response = execSync(command).toString();
-    const archived = /This repository has been archived by the owner|It is now read-only.|Public archive/.test(response);
-    browser.close();
-    if (archived) {
-        return {
-            type: 'archived_repo',
-            details: `Archived repository (${repoUrl})`
-        };
+    try {
+        const command = `curl -s "${repoUrl}"`;
+        const html = execSync(command).toString();
+        const archived = isRepoArchived(html);
+        if (archived) {
+            return {
+                type: 'archived_repo',
+                details: `Archived repository (${repoUrl})`
+            };
+        }
+        return null;
     }
-    return null;
+    catch (error) {
+        console.error(`\n ❌ Error checking if repository is archived: ${error}`);
+        return null;
+    }
+}
+function isRepoArchived(html) {
+    return /This repository has been archived by the owner|It is now read-only.|Public archive/.test(html);
 }
