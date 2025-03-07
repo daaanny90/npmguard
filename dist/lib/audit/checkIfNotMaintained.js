@@ -114,12 +114,10 @@ async function fetchLastCommitDate(username, repo) {
                 });
                 response.on('end', () => {
                     if (response.statusCode === 403) {
-                        console.warn('GitHub API rate limit exceeded, falling back to HTML parsing');
                         resolve(null);
                         return;
                     }
                     if (response.statusCode !== 200) {
-                        console.warn(`GitHub API returned status ${response.statusCode}, falling back to HTML parsing`);
                         resolve(null);
                         return;
                     }
