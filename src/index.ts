@@ -4,7 +4,6 @@ import fs from 'fs';
 import { execSync } from 'child_process';
 import { Command } from 'commander';
 import Table from 'cli-table3';
-import chalk from 'chalk';
 import { PackageJson } from './types/PackageJson.type.js';
 import { checkPreOneVersion } from './lib/audit/checkPreOneVersion.js';
 import { checkIfNotMaintained } from './lib/audit/checkIfNotMaintained.js';
@@ -29,7 +28,7 @@ async function checkDependencyMaintenance(options: CommandOptions): Promise<void
   const cutoffDate = new Date();
   cutoffDate.setMonth(cutoffDate.getMonth() - months);
 
-  console.log(chalk.bold(`\n📋 Dependency audit with following criteria:`));
+  console.log(`\n📋 DEPENDENCY AUDIT WITH FOLLOWING CRITERIA:`);
   console.log(`- Last release older than ${months} months`);
   console.log(`- Last commit older than 12 months`)
   console.log(`- Repository not archived`);
@@ -90,14 +89,14 @@ async function checkDependencyMaintenance(options: CommandOptions): Promise<void
   process.stdout.write('\n\n');
 
   if (dependencyIssues.length === 0) {
-    console.log(chalk.green(`✅ No dependency issues found.`));
+    console.log(`✅ No dependency issues found.`);
   } else {
     const table = new Table({
       head: [
-        chalk.blue('Package'), 
-        chalk.blue('Version'), 
-        chalk.blue('Issues'),
-        chalk.blue('Repo Url')
+        'Package', 
+        'Version', 
+        'Issues',
+        'Repo Url'
       ],
       colWidths: [30, 15, 80]
     });
@@ -115,14 +114,14 @@ async function checkDependencyMaintenance(options: CommandOptions): Promise<void
       }).join('\n');
 
       table.push([
-        chalk.yellow(dep.name),
-        chalk.green(dep.version),
+        dep.name,
+        dep.version,
         issueDetails,
-        chalk.yellow(dep.url),
+        dep.url,
       ]);
     });
 
-    console.log(chalk.bold(`\n🚨 Dependency issues:`));
+    console.log(`\n🚨 DEPENDENCY ISSUES:`);
     console.log(table.toString());
     console.log(`\n📊 Found ${dependencyIssues.length} dependency issues.`);
   }

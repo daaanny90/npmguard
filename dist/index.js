@@ -20,7 +20,7 @@ async function checkDependencyMaintenance(options) {
     let months = options.months || 12;
     const cutoffDate = new Date();
     cutoffDate.setMonth(cutoffDate.getMonth() - months);
-    console.log(chalk.bold(`\n📋 Dependency audit with following criteria:`));
+    console.log(`\n📋 DEPENDENCY AUDIT WITH FOLLOWING CRITERIA:`);
     console.log(`- Last release older than ${months} months`);
     console.log(`- Last commit older than 12 months`);
     console.log(`- Repository not archived`);
@@ -78,10 +78,10 @@ async function checkDependencyMaintenance(options) {
     else {
         const table = new Table({
             head: [
-                chalk.blue('Package'),
-                chalk.blue('Version'),
-                chalk.blue('Issues'),
-                chalk.blue('Repo Url')
+                'Package',
+                'Version',
+                'Issues',
+                'Repo Url'
             ],
             colWidths: [30, 15, 80]
         });
@@ -105,13 +105,13 @@ async function checkDependencyMaintenance(options) {
                 return `${icon} ${issue.details}`;
             }).join('\n');
             table.push([
-                chalk.yellow(dep.name),
-                chalk.green(dep.version),
+                dep.name,
+                dep.version,
                 issueDetails,
-                chalk.yellow(dep.url),
+                dep.url,
             ]);
         });
-        console.log(chalk.bold(`\n🚨 Dependency issues:`));
+        console.log(`\n🚨 DEPENDENCY ISSUES:`);
         console.log(table.toString());
         console.log(`\n📊 Found ${dependencyIssues.length} dependency issues.`);
     }
