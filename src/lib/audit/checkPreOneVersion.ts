@@ -1,10 +1,13 @@
-import semver from 'semver';
 import { Issue } from '../../types/Issue.type.js';
 
 export async function checkPreOneVersion(depVersion: string): Promise<Issue | null> {
-  const isPreOne = depVersion.startsWith('0.') || 
-    depVersion.startsWith('^0.') ||
-    (semver.valid(depVersion) && semver.lt(depVersion, '1.0.0'));
+  const cleanVersion = depVersion.replace(/^[\^~]/, '');
+
+  const versionParts = cleanVersion.split('.');
+
+  const isPreOne = versionParts[0] === '0' || 
+    (versionParts[0] === '0' && versionParts[1] === '0' && versionParts[2] === '0') ||
+    (parseInt(versionParts[0], 10) < 1);
 
   if (isPreOne) {
     return {
