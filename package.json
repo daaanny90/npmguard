@@ -28,10 +28,10 @@
     "cheerio": "^1.0.0",
     "cli-table3": "^0.6.5",
     "commander": "^12.1.0",
-    "puppeteer": "^23.11.1",
     "semver": "^7.6.3"
   },
   "devDependencies": {
+    "@types/node": "^22.13.9",
     "@types/semver": "^7.5.8",
     "typescript": "^5.8.2"
   }
