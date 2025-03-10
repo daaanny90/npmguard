@@ -3,7 +3,6 @@ import fs from 'fs';
 import { execSync } from 'child_process';
 import { Command } from 'commander';
 import Table from 'cli-table3';
-import chalk from 'chalk';
 import { checkPreOneVersion } from './lib/audit/checkPreOneVersion.js';
 import { checkIfNotMaintained } from './lib/audit/checkIfNotMaintained.js';
 import { hasToBeCheckedManually } from './lib/audit/hasToBeCheckedManually.js';
@@ -73,7 +72,7 @@ async function checkDependencyMaintenance(options) {
     }
     process.stdout.write('\n\n');
     if (dependencyIssues.length === 0) {
-        console.log(chalk.green(`✅ No dependency issues found.`));
+        console.log(`✅ No dependency issues found.`);
     }
     else {
         const table = new Table({
